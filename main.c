@@ -46,20 +46,96 @@ int demanarEdat()
     return edat;
 }
 
-float demanarCapitalAss()
+// TODO: error, el al introducir el valor 2.5 asigna el case 2
+int demanarCapitalAss()
 {
-    float capitalAss;
+    /**int respostaUsuari, capitalAss, resultat;
 
-    // TODO: implementar la funcion
+    printf("Introdueix el capital a assegurar:\n" 
+        "1 - 50.000 EUR\n"
+        "2 - 100.000 EUR\n"
+        "3 - 150.000 EUR\n"
+        "4 - 200.000 EUR\n"
+        "5 - 300.000 EUR\n"
+    );
 
-    return capitalAss;
+    do
+    {
+        printf("Escull una opció (1-5): ");
+        resultat = scanf("%d", &respostaUsuari);
+
+        if (resultat == 1)
+        {
+            switch (respostaUsuari) {
+                case 1:
+                    capitalAss = 50000;
+                    break;
+                case 2:
+                    capitalAss = 100000;
+                    break;
+                case 3:
+                    capitalAss = 150000;
+                    break;
+                case 4:
+                    capitalAss = 200000;
+                    break;
+                case 5:
+                    capitalAss = 300000;
+                    break;
+                default:
+                    capitalAss = 0;
+                    fprintf(stderr, "Error: seleccioneu una opció entre 1 i 5.\n");
+            }
+        }
+        else if (resultat == 0)
+        {
+            fprintf(stderr, "Error: seleccioneu una opció entre 1 i 5.\n");
+        }
+        else
+        {
+            fprintf(stderr, "Error indefinit\n");
+
+            return -1;
+        }
+
+        netejarBuffer();
+
+    } while (capitalAss == 0 || resultat != 1);
+
+    return capitalAss;**/
 }
 
 char demanarFumador()
 {
     char fumador;
+    int resultat;
 
-    // TODO: implementar la funcion
+    do
+    {
+        printf("És fumador/a? (S/N): ");
+        resultat = scanf("%c", &fumador);
+
+        if (resultat == 1)
+        {
+            if (fumador != 'S' && fumador != 's' && fumador != 'N' && fumador != 'n')
+            {
+                fprintf(stderr, "Error: introduïu S o N.\n");
+            }
+        }
+        else if (resultat == 0)
+        {
+            fprintf(stderr, "Error: introduïu S o N.\n");
+        }
+        else
+        {
+            fprintf(stderr, "Error indefinit\n");
+
+            return -1;
+        }
+
+        netejarBuffer();
+
+    } while (fumador != 'S' && fumador != 's' && fumador != 'N' && fumador != 'n' || resultat != 1);
 
     return fumador;
 }
@@ -113,16 +189,17 @@ int main()
     printf("*** ASSEGURANCES SAFELIFE ***\n");
     printf("*****************************\n");
 
-    edatPersona = demanarEdat();
+    // edatPersona = demanarEdat();
 
-    printf("La edat introduïda es: %d\n", edatPersona);
+    // printf("La edat introduïda es: %d\n", edatPersona);
 
-    capitalAssegurat = demanarCapitalAss();
+    // capitalAssegurat = demanarCapitalAss();
 
-    printf("La edat introduïda es: %d\n", edatPersona);
+    // printf("El capital assegurat es de: %d\n", capitalAssegurat);
 
+    // fumador = demanarFumador();
+    // printf("La edat introduïda es: %c\n", fumador);
 
-    fumador = demanarFumador();
     pesKg = demanarPes();
     alcada = demanarAlcada();
     categoriaProf = demanarCategoriaProf();
