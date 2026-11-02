@@ -5,12 +5,16 @@
 
 #include <stdio.h>
 
-//Hola
+void netejarBuffer() {
+    int caracter;
+    // Buidem el buffer. Seguim llegint fins el salt de línia o el EOF (End Of File)
+    while ((caracter = getchar()) != '\n' && caracter != EOF)
+    {}
+}
 
 int demanarEdat()
 {
-    int edat;
-    int resultat;
+    int edat, resultat;
 
     do
     {
@@ -19,21 +23,25 @@ int demanarEdat()
 
         if (resultat == 1)
         {
-            if (edat < 18 && edat > 70)
+            if (edat < 18 || edat > 70)
             {
-                printf("L'edat ha d'estar entre 18 i 70 anys\n");
+                fprintf(stderr, "L'edat ha d'estar entre 18 i 70 anys\n");
             }
         }
         else if (resultat == 0)
         {
-            printf("Ha introduït un valor incorrecte\n");
+            fprintf(stderr, "L'edat ha d'estar entre 18 i 70 anys\n");
         }
         else
         {
-            printf("Error indefinit\n");
+            fprintf(stderr, "Error indefinit\n");
+
+            return -1;
         }
 
-    } while (edat != "" && edat != NULL && edat <= 18 && edat <= 70);
+        netejarBuffer();
+
+    } while (edat < 18 || edat > 70 || resultat != 1);
 
     return edat;
 }
@@ -106,7 +114,14 @@ int main()
     printf("*****************************\n");
 
     edatPersona = demanarEdat();
+
+    printf("La edat introduïda es: %d\n", edatPersona);
+
     capitalAssegurat = demanarCapitalAss();
+
+    printf("La edat introduïda es: %d\n", edatPersona);
+
+
     fumador = demanarFumador();
     pesKg = demanarPes();
     alcada = demanarAlcada();
